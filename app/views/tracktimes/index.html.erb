@@ -1,0 +1,28 @@
+<div class="row">
+  <aside class="col-sm-12">
+    <%= form_with(model: @tracktime,url:tracktimes_path, class: "row g-3") do |f| %>
+        <%= hidden_field_tag :start_time, Time.now %>
+        <div class="col-sm-4 col-auto">
+          <%= f.text_area :description, class: 'form-control', placeholder: "description", rows: 1 %>
+        </div>
+        <div class="col-sm-2 col-auto">
+          Project
+          <% # = f.collection_select :name ,Project.all, :name,include_blank:"Select project" class: 'form-control', rows: 1 %>
+        </div>
+         <div class="col-sm-2 col-auto">
+          Start Time
+          <% # = f.collection_select :name ,Project.all, :name,include_blank:"Select project" class: 'form-control', rows: 1 %>
+        </div>
+        <div class="col-sm-2 col-auto">
+          Duration
+        </div>
+        <div class="col-sm-1 col-auto">
+          <%= f.submit 'Start', class: 'btn btn-primary ' %>
+        </div>
+      
+    <% end %>
+  </aside>
+  <div class="col-sm-12 mt-5">
+    <%= render 'tracktimes/tracktimes', tracktimes: @tracktimes %>
+  </div>
+</div>
