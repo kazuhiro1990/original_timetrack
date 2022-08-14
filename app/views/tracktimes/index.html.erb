@@ -18,7 +18,7 @@
           Duration
         </div>
         <div class="col-sm-1 col-auto">
-          <%= hidden_field_tag :end_time, Time.zone.now %>
+          <%#= hidden_field_tag :end_time, Time.zone.now %>
           <%= f.submit 'Stop', class: 'btn btn-danger ' %>
         </div>
       <% end %>  
@@ -40,7 +40,7 @@
           Duration
         </div>
         <div class="col-sm-1 col-auto">
-           <%= hidden_field_tag :start_time, Time.zone.now %>
+           <%#= hidden_field_tag :start_time, Time.zone.now %>
            <%= f.submit 'Start', class: 'btn btn-primary ' %>
         </div>
       <% end %>

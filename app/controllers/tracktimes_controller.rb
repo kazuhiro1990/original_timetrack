@@ -8,9 +8,11 @@ class TracktimesController < ApplicationController
   #計測開始
   def trackstart
       session[:description]=params[:description]
-      session[:start_time]=params[:start_time]
-      session[:end_time]=params[:end_time]
+      #session[:start_time]=params[:start_time]
+      #session[:end_time]=params[:end_time]
       @tracktime = Tracktime.new(tracktime_params)
+      @tracktime.start_time= Time.zone.now
+      session[:start_time]=@tracktime.start_time
       @tracktime.save
       session[:tracking]  = true
       @tracking = session[:tracking]
@@ -20,6 +22,8 @@ class TracktimesController < ApplicationController
   #計測終了
   def create
       @tracktime=Tracktime.order(updated_at: :desc).limit(1)
+      #byebug
+      @tracktime.update(end_time: Time.zone.now)
       if @tracktime.update(tracktime_params)
         flash[:success] = '記録しました。'
         session[:tracking]  = false
