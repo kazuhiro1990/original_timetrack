@@ -1,6 +1,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">id</th> 
       <th scope="col">Project</th>
       <th scope="col">description</th>
       <th scope="col">start time</th>
@@ -11,6 +12,7 @@
   <tbody>
     <% @tracktimes.each do |tracktime| %>
     <tr>
+      <td><%= tracktime.id %></td>
       <td><%#= tracktime.project.name %>Project nameが入る予定</td>
       <td><%= tracktime.description %></td>
       <td><%= tracktime.start_time %></td>

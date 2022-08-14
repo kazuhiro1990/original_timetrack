@@ -1,7 +1,30 @@
 <div class="row">
   <aside class="col-sm-12">
-    <%= form_with(model: @tracktime,url:tracktimes_path, class: "row g-3") do |f| %>
-        <%= hidden_field_tag :start_time, Time.now %>
+    <% if @tracking  == true %>
+    <!-- STOPフォーム -->
+      <%= form_with(model: @tracktime,url:tracktimes_path, class: "row g-3") do |f| %>
+        <div class="col-sm-4 col-auto">
+          <%= f.text_area :description, class: 'form-control', placeholder: "description",value: session[:description], rows: 1 %>
+        </div>
+        <div class="col-sm-2 col-auto">
+          Project
+          <% # = f.collection_select :name ,Project.all, :name,include_blank:"Select project" class: 'form-control', rows: 1 %>
+        </div>
+         <div class="col-sm-2 col-auto">
+          Start Time:<%= session[:start_time] %>
+          <% # = f.collection_select :name ,Project.all, :name,include_blank:"Select project" class: 'form-control', rows: 1 %>
+        </div>
+        <div class="col-sm-2 col-auto">
+          Duration
+        </div>
+        <div class="col-sm-1 col-auto">
+          <%= hidden_field_tag :end_time, Time.zone.now %>
+          <%= f.submit 'Stop', class: 'btn btn-danger ' %>
+        </div>
+      <% end %>  
+    <% else %>
+      <!-- STARTフォーム -->
+      <%= form_with(model: @tracktime,url:trackstart_path, class: "row g-3") do |f| %>   
         <div class="col-sm-4 col-auto">
           <%= f.text_area :description, class: 'form-control', placeholder: "description", rows: 1 %>
         </div>
@@ -17,9 +40,10 @@
           Duration
         </div>
         <div class="col-sm-1 col-auto">
-          <%= f.submit 'Start', class: 'btn btn-primary ' %>
+           <%= hidden_field_tag :start_time, Time.zone.now %>
+           <%= f.submit 'Start', class: 'btn btn-primary ' %>
         </div>
-      
+      <% end %>
     <% end %>
   </aside>
   <div class="col-sm-12 mt-5">

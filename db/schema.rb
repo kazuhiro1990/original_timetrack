@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2022_08_13_041340) do
 
   create_table "tracktimes", charset: "utf8mb4", force: :cascade do |t|
     t.string "description"
-    t.time "start_time"
-    t.time "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.time "duration"
     t.bigint "project_id"
     t.datetime "created_at", precision: 6, null: false
