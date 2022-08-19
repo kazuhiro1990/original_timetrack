@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root to:'tracktimes#index'
   resources :tracktimes, except: [:show, :new]
   post 'trackstart', to: 'tracktimes#trackstart'
+  patch 'trackend', to: 'tracktimes#trackend'
+  
+  
+  resources :projects, except: [:show, :new, :destroy]
 end

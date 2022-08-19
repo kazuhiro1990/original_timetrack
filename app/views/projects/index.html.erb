@@ -1,0 +1,20 @@
+<div class="mb-5">
+  <h2>プロジェクト新規作成</h2>
+  <div class="mb-3">
+    <%= form_with(model: @project ) do |f| %>
+      <%= f.label :name, 'プロジェクト名' %>
+      <%= f.text_field :name %>
+  
+      <%= f.submit '作成' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="mb-5">
+  <h2>プロジェクト一覧</h2>
+  <ul>
+    <% @projects.each do |project| %>
+      <li><%= project.name %></li>
+    <% end %>
+  </ul>
+</div>

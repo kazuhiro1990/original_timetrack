@@ -7,22 +7,33 @@
       <th scope="col">start time</th>
       <th scope="col">end time</th>
       <th scope="col">duration</th>
+      <th scope="col"></th>
+      
     </tr>
   </thead>
   <tbody>
     <% @tracktimes.each do |tracktime| %>
     <tr>
       <td><%= tracktime.id %></td>
-      <td><%#= tracktime.project.name %>Project nameが入る予定</td>
+      <td>
+        <%if @project=Project.find_by(id: tracktime.project_id) %>
+        <%=  @project.name %>
+        <% else 
+          nil
+        end %>  
+      <% #byebug %>
+      </td>
       <td><%= tracktime.description %></td>
-      <td><%= tracktime.start_time %></td>
-      <td><%= tracktime.end_time %></td>
-      <td><% if tracktime.end_time %>
-          <%= tracktime.end_time - tracktime.start_time %>
-          <% else %>
-          <%= nil %>
-          </td>
-          <% end %>
+      <td><%= l tracktime.start_time %></td>
+      <% if tracktime.end_time %>
+        <td><%= l tracktime.end_time %></td>
+        <td>
+          <%= Time.at(tracktime.duration).utc.strftime('%X') %></td>
+      <% else %>
+        <td></td>
+        <td></td>
+      <% end %>
+      <td><%= link_to 'edit', edit_tracktime_path(tracktime) %></td>
     </tr>
     <% end %>
   </tbody>

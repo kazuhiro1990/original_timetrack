@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_13_041340) do
+ActiveRecord::Schema.define(version: 2022_08_18_105626) do
 
   create_table "projects", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_08_13_041340) do
     t.string "description"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.time "duration"
+    t.integer "duration"
     t.bigint "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

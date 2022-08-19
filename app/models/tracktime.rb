@@ -1,4 +1,4 @@
 class Tracktime < ApplicationRecord
-  #belongs_to :project
+  belongs_to :project, optional: true
 
 end
