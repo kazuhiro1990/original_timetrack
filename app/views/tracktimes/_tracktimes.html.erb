@@ -28,7 +28,10 @@
       <% if tracktime.end_time %>
         <td><%= l tracktime.end_time %></td>
         <td>
-          <%= Time.at(tracktime.duration).utc.strftime('%X') %></td>
+          <% if tracktime.duration %>
+          <%=Time.at(tracktime.duration).utc.strftime('%X') %>
+          <% else  
+          end%></td>
       <% else %>
         <td></td>
         <td></td>
