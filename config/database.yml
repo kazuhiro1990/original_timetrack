@@ -52,6 +52,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: message_board_production
-  username: message_board
-  password: <%= ENV['MESSAGE_BOARD_DATABASE_PASSWORD'] %>
+  database: timetrack_production
+  username: timetrack
+  password: <%= ENV['TIMETRACK_DATABASE_PASSWORD'] %>
