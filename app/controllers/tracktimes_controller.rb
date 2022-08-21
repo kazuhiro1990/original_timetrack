@@ -81,7 +81,7 @@ class TracktimesController < ApplicationController
   end
   
   def endtracktime_params
-    params.permit(:description,:start_time)
+    params.require(:tracktime).permit(:description,:start_time, :project_id)
   end
   
 end
