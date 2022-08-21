@@ -29,7 +29,7 @@ class TracktimesController < ApplicationController
       @tracktime.update(end_time: Time.zone.now)
       @duration=@tracktime[:end_time]-@tracktime[:start_time]
       @tracktime.duration=@duration
-      @tracktime.save
+      @tracktime.save!
       
       
       if @tracktime.update(endtracktime_params)
