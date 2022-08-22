@@ -25,7 +25,8 @@ class TracktimesController < ApplicationController
 
   #計測終了
   def trackend
-      @tracktime=Tracktime.find_by(id: session[:id])
+      #@tracktime=Tracktime.find_by(id: session[:id])
+      @tracktime=Tracktime.find(session[:id])
       @tracktime.update(end_time: Time.zone.now)
       @duration=@tracktime[:end_time]-@tracktime[:start_time]
       @tracktime.duration=@duration
