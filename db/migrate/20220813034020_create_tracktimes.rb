@@ -4,7 +4,7 @@ class CreateTracktimes < ActiveRecord::Migration[6.1]
       t.string :description
       t.datetime :start_time
       t.datetime :end_time
-      t.time :duration
+      t.integer :duration
       t.references :project
 
       t.timestamps
