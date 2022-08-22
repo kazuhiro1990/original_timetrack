@@ -32,7 +32,7 @@ class TracktimesController < ApplicationController
       @tracktime.save!
       
       
-      if @tracktime.update(endtracktime_params)
+      if @tracktime.update!(endtracktime_params)
         flash[:success] = '記録しました。'
         session[:tracking]  = false
         @tracking = session[:tracking]
@@ -53,7 +53,7 @@ class TracktimesController < ApplicationController
     if @tracktime.update(tracktime_params)
         flash[:success] = '記録しました。'
         @duration=@tracktime[:end_time]-@tracktime[:start_time]
-        @tracktime.duration=@tracktime[:end_time]-@tracktime[:start_time]
+        @tracktime[:duration]=@tracktime[:end_time]-@tracktime[:start_time]
         @tracktime.save
         redirect_to root_url
        # byebug
